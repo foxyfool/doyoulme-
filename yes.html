@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="./yes_style.css">
+    </head> 
+    <body>
+        <div class="container">
+            <div >
+                <h1 class = "header_text">Yeeeyyyy!!</h1>
+            </div>
+            <div class="gif_container">
+                <img src="https://media0.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif" alt="Cute animated illustration">
+                <div class="buttons">
+                    <button class="btn" id="playButton">Our wedding Song</button>
+                    <button class="btn" id="noButton1" onmouseover="moveButton()" onclick="moveButton()">We Are Married Now!</button>
+                    <audio id="audioPlayer" src="chipi chipi.mp3"></audio>
+                </div>
+            </div>
+        </div>
+        <script>
+
+            // Get references to the button and audio element
+            var playButton = document.getElementById('playButton');
+            var audioPlayer = document.getElementById('audioPlayer');
+        
+            // Add a click event listener to the button
+            playButton.addEventListener('click', function() {
+              // Check if the audio is currently paused
+              if (audioPlayer.paused) {
+                // If paused, play the audio
+                audioPlayer.play();
+                playButton.textContent = 'You dont love me?!';
+              } else {
+                // If playing, pause the audio
+                audioPlayer.pause();
+                playButton.textContent = 'I Love You bby 😊';
+              }
+            });
+            
+    // Add an event listener for the 'ended' event of the audio element
+    audioPlayer.addEventListener('ended', function() {
+      // Hide the button when the audio playback is complete
+      playButton.style.display = 'none';
+    });
+    function moveButton() {
+    var button = document.getElementById('noButton1');
+    
+    // Calculate the maximum X and Y positions to keep the button within the visible area
+    var maxX = window.innerWidth - button.offsetWidth;
+    var maxY = window.innerHeight - button.offsetHeight;
+
+    // Calculate random X and Y positions within the visible area
+    var x = Math.random() * maxX;
+    var y = Math.random() * maxY;
+
+    // Ensure the button stays within the bounds
+    x = Math.min(Math.max(x, 0), maxX);
+    y = Math.min(Math.max(y, 0), maxY);
+
+    // Set the button's position
+    button.style.left = `${x}px`;
+    button.style.top = `${y}px`;
+}
+
+
+          </script>
+    </body> 
+</html>
